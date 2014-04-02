@@ -52,6 +52,8 @@
 @property (assign, readwrite, nonatomic) CGFloat contentViewScaleValue;
 @property (assign, readwrite, nonatomic) CGFloat contentViewInLandscapeOffsetCenterX;
 @property (assign, readwrite, nonatomic) CGFloat contentViewInPortraitOffsetCenterX;
+@property (assign, readwrite, nonatomic) CGFloat contentViewInLandscapeOffsetCenterY;
+@property (assign, readwrite, nonatomic) CGFloat contentViewInPortraitOffsetCenterY;
 @property (assign, readwrite, nonatomic) CGFloat parallaxMenuMinimumRelativeValue;
 @property (assign, readwrite, nonatomic) CGFloat parallaxMenuMaximumRelativeValue;
 @property (assign, readwrite, nonatomic) CGFloat parallaxContentMinimumRelativeValue;

@@ -97,6 +97,8 @@
     _contentViewShadowRadius = 8.0f;
     _contentViewInLandscapeOffsetCenterX = 30.f;
     _contentViewInPortraitOffsetCenterX  = 30.f;
+    _contentViewInLandscapeOffsetCenterY = 0.0f;
+    _contentViewInPortraitOffsetCenterY = 0.0f;
     _contentViewScaleValue = 0.7f;
 }
 
@@ -263,7 +265,7 @@
         } else {
             self.contentViewContainer.transform = CGAffineTransformIdentity;
         }
-        self.contentViewContainer.center = CGPointMake((UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame) : self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame)), self.contentViewContainer.center.y);
+        self.contentViewContainer.center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame),self.contentViewInLandscapeOffsetCenterY + self.contentViewContainer.center.y) : CGPointMake(self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame),self.contentViewInPortraitOffsetCenterY + self.contentViewContainer.center.y));
 
         self.menuViewContainer.alpha = 1.0f;
         self.menuViewContainer.transform = CGAffineTransformIdentity;
@@ -302,7 +304,7 @@
         } else {
             self.contentViewContainer.transform = CGAffineTransformIdentity;
         }
-        self.contentViewContainer.center = CGPointMake((UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? -self.contentViewInLandscapeOffsetCenterX : -self.contentViewInPortraitOffsetCenterX), self.contentViewContainer.center.y);
+        self.contentViewContainer.center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(-self.contentViewInLandscapeOffsetCenterX,self.contentViewInLandscapeOffsetCenterY + self.contentViewContainer.center.y) : CGPointMake(-self.contentViewInPortraitOffsetCenterX,self.contentViewInPortraitOffsetCenterY + self.contentViewContainer.center.y));
         
         self.menuViewContainer.alpha = 1.0f;
         self.menuViewContainer.transform = CGAffineTransformIdentity;
@@ -745,9 +747,9 @@
         
         CGPoint center;
         if (self.leftMenuVisible) {
-            center = CGPointMake((UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ? self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame) : self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame)), self.contentViewContainer.center.y);
+            center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame),self.contentViewInLandscapeOffsetCenterY + self.contentViewContainer.center.y) : CGPointMake(self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame),self.contentViewInPortraitOffsetCenterY + self.contentViewContainer.center.y));
         } else {
-            center = CGPointMake((UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ? -self.contentViewInLandscapeOffsetCenterX : -self.contentViewInPortraitOffsetCenterX), self.contentViewContainer.center.y);
+            center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(-self.contentViewInLandscapeOffsetCenterX,self.contentViewInLandscapeOffsetCenterY + self.contentViewContainer.center.y) : CGPointMake(-self.contentViewInPortraitOffsetCenterX,self.contentViewInPortraitOffsetCenterY + self.contentViewContainer.center.y));
         }
         
         self.contentViewContainer.center = center;
