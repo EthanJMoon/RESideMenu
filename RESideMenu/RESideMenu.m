@@ -148,6 +148,8 @@
             [self __hideViewController:self.contentViewController];
             [contentViewController didMoveToParentViewController:self];
             _contentViewController = contentViewController;
+
+            [self __statusBarNeedsAppearanceUpdate];
             [self __updateContentViewShadow];
             
             if (self.visible) {
@@ -201,7 +203,6 @@
     }
     
     self.contentViewContainer.frame = self.view.bounds;
-    self.contentViewContainer.backgroundColor = [UIColor redColor];
     self.contentViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [self addChildViewController:self.contentViewController];
