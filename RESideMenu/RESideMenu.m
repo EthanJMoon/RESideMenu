@@ -282,9 +282,9 @@
         
         self.visible = YES;
         self.leftMenuVisible = YES;
-        
-        [self __statusBarNeedsAppearanceUpdate];
     }];
+    
+    [self __statusBarNeedsAppearanceUpdate];
 }
 
 - (void)__showRightMenuViewController
@@ -321,9 +321,9 @@
         self.rightMenuVisible = self.visible;
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         [self __addContentViewControllerMotionEffects];
-        
-        [self __statusBarNeedsAppearanceUpdate];
     }];
+    
+    [self __statusBarNeedsAppearanceUpdate];
 }
 
 - (void)__hideViewController:(UIViewController *)viewController
@@ -407,7 +407,7 @@
 - (void)__statusBarNeedsAppearanceUpdate
 {
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-        [UIView animateWithDuration:0.2f animations:^{
+        [UIView animateWithDuration:0.3f animations:^{
             [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
         }];
     }
