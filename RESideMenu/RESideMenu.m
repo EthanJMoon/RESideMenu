@@ -135,6 +135,11 @@
 
 - (void)setContentViewController:(UIViewController *)contentViewController animated:(BOOL)animated
 {
+    if (_contentViewController == contentViewController)
+    {
+        return;
+    }
+    
     if (!animated) {
         [self setContentViewController:contentViewController];
     } else {
