@@ -70,6 +70,9 @@
     _contentViewContainer = [[UIView alloc] init];
     
     _animationDuration = 0.35f;
+    _animationSpringDamping = 0.5f;
+    _animationSpringVelocity = 1.0f;
+    
     _interactivePopGestureRecognizerEnabled = YES;
   
     _menuViewControllerTransformation = CGAffineTransformMakeScale(1.5f, 1.5f);
@@ -265,7 +268,9 @@
     [self __addContentButton];
     [self __updateContentViewShadow];
     
-    [UIView animateWithDuration:self.animationDuration delay:0.0f usingSpringWithDamping:0.5f initialSpringVelocity:0.25f options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:self.animationDuration delay:0.0f usingSpringWithDamping:self.animationSpringDamping
+          initialSpringVelocity:self.animationSpringVelocity
+                        options:UIViewAnimationOptionCurveEaseIn animations:^{
         if (self.scaleContentView) {
             self.contentViewContainer.transform = CGAffineTransformMakeScale(self.contentViewScaleValue, self.contentViewScaleValue);
         } else {
@@ -303,7 +308,9 @@
     [self __updateContentViewShadow];
     
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    [UIView animateWithDuration:self.animationDuration animations:^{
+    [UIView animateWithDuration:self.animationDuration delay:0.0f usingSpringWithDamping:self.animationSpringDamping
+          initialSpringVelocity:self.animationSpringVelocity
+                        options:UIViewAnimationOptionCurveEaseIn animations:^{
         if (self.scaleContentView) {
             self.contentViewContainer.transform = CGAffineTransformMakeScale(self.contentViewScaleValue, self.contentViewScaleValue);
         } else {
@@ -384,7 +391,9 @@
     
     if (animated) {
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-        [UIView animateWithDuration:self.animationDuration delay:0.0f usingSpringWithDamping:0.5f initialSpringVelocity:0.25f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [UIView animateWithDuration:self.animationDuration delay:0.0f usingSpringWithDamping:self.animationSpringDamping
+              initialSpringVelocity:self.animationSpringVelocity
+                            options:UIViewAnimationOptionCurveEaseIn animations:^{
             animationBlock();
         } completion:^(BOOL finished) {
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];

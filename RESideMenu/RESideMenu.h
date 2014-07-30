@@ -36,6 +36,9 @@
 @property (weak, readwrite, nonatomic) id<RESideMenuDelegate> delegate;
 
 @property (assign, readwrite, nonatomic) NSTimeInterval animationDuration;
+@property (assign, readwrite, nonatomic) CGFloat animationSpringDamping;
+@property (assign, readwrite, nonatomic) CGFloat animationSpringVelocity;
+
 @property (strong, readwrite, nonatomic) UIImage *backgroundImage;
 @property (assign, readwrite, nonatomic) BOOL panGestureEnabled;
 @property (assign, readwrite, nonatomic) BOOL panFromEdge;
