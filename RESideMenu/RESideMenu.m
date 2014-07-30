@@ -265,19 +265,18 @@
     [self __addContentButton];
     [self __updateContentViewShadow];
     
-    [UIView animateWithDuration:self.animationDuration animations:^{
+    [UIView animateWithDuration:self.animationDuration delay:0.0f usingSpringWithDamping:0.5f initialSpringVelocity:0.25f options:UIViewAnimationOptionCurveEaseIn animations:^{
         if (self.scaleContentView) {
             self.contentViewContainer.transform = CGAffineTransformMakeScale(self.contentViewScaleValue, self.contentViewScaleValue);
         } else {
             self.contentViewContainer.transform = CGAffineTransformIdentity;
         }
         self.contentViewContainer.center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame),self.contentViewInLandscapeOffsetCenterY + self.contentViewContainer.center.y) : CGPointMake(self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame),self.contentViewInPortraitOffsetCenterY + self.contentViewContainer.center.y));
-
+        
         self.menuViewContainer.alpha = 1.0f;
         self.menuViewContainer.transform = CGAffineTransformIdentity;
         if (self.scaleBackgroundImageView)
             self.backgroundImageView.transform = CGAffineTransformIdentity;
-            
     } completion:^(BOOL finished) {
         [self __addContentViewControllerMotionEffects];
         
@@ -385,7 +384,7 @@
     
     if (animated) {
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-        [UIView animateWithDuration:self.animationDuration animations:^{
+        [UIView animateWithDuration:self.animationDuration delay:0.0f usingSpringWithDamping:0.5f initialSpringVelocity:0.25f options:UIViewAnimationOptionCurveEaseIn animations:^{
             animationBlock();
         } completion:^(BOOL finished) {
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
