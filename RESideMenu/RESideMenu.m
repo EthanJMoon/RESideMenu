@@ -70,15 +70,15 @@
     _contentViewContainer = [[UIView alloc] init];
     
     _animationDuration = 0.35f;
-    _animationSpringDamping = 0.5f;
-    _animationSpringVelocity = 1.0f;
+    _animationSpringDamping = 0.575f;
+    _animationSpringVelocity = 0.425f;
     
     _interactivePopGestureRecognizerEnabled = YES;
   
     _menuViewControllerTransformation = CGAffineTransformMakeScale(1.5f, 1.5f);
     
     _scaleContentView = YES;
-    _scaleBackgroundImageView = YES;
+    _scaleBackgroundImageView = NO;
     _scaleMenuView = YES;
     
     _parallaxEnabled = YES;
@@ -276,7 +276,7 @@
         } else {
             self.contentViewContainer.transform = CGAffineTransformIdentity;
         }
-        self.contentViewContainer.center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame),self.contentViewInLandscapeOffsetCenterY + self.contentViewContainer.center.y) : CGPointMake(self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame),self.contentViewInPortraitOffsetCenterY + self.contentViewContainer.center.y));
+        self.contentViewContainer.center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame),self.contentViewInLandscapeOffsetCenterY + CGRectGetWidth(self.view.frame)/2) : CGPointMake(self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame),self.contentViewInPortraitOffsetCenterY + CGRectGetHeight(self.view.frame)/2));
         
         self.menuViewContainer.alpha = 1.0f;
         self.menuViewContainer.transform = CGAffineTransformIdentity;
@@ -316,7 +316,7 @@
         } else {
             self.contentViewContainer.transform = CGAffineTransformIdentity;
         }
-        self.contentViewContainer.center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(-self.contentViewInLandscapeOffsetCenterX,self.contentViewInLandscapeOffsetCenterY + self.contentViewContainer.center.y) : CGPointMake(-self.contentViewInPortraitOffsetCenterX,self.contentViewInPortraitOffsetCenterY + self.contentViewContainer.center.y));
+        self.contentViewContainer.center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(-self.contentViewInLandscapeOffsetCenterX,self.contentViewInLandscapeOffsetCenterY + CGRectGetWidth(self.view.frame)/2) : CGPointMake(-self.contentViewInPortraitOffsetCenterX,self.contentViewInPortraitOffsetCenterY + CGRectGetHeight(self.view.frame)/2));
         
         self.menuViewContainer.alpha = 1.0f;
         self.menuViewContainer.transform = CGAffineTransformIdentity;
@@ -761,9 +761,9 @@
         
         CGPoint center;
         if (self.leftMenuVisible) {
-            center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame),self.contentViewInLandscapeOffsetCenterY + self.contentViewContainer.center.y) : CGPointMake(self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame),self.contentViewInPortraitOffsetCenterY + self.contentViewContainer.center.y));
+            center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame),self.contentViewInLandscapeOffsetCenterY + CGRectGetWidth(self.view.frame)/2) : CGPointMake(self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame),self.contentViewInPortraitOffsetCenterY + CGRectGetHeight(self.view.frame)/2));
         } else {
-            center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(-self.contentViewInLandscapeOffsetCenterX,self.contentViewInLandscapeOffsetCenterY + self.contentViewContainer.center.y) : CGPointMake(-self.contentViewInPortraitOffsetCenterX,self.contentViewInPortraitOffsetCenterY + self.contentViewContainer.center.y));
+            center = (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? CGPointMake(-self.contentViewInLandscapeOffsetCenterX,self.contentViewInLandscapeOffsetCenterY + CGRectGetWidth(self.view.frame)/2) : CGPointMake(-self.contentViewInPortraitOffsetCenterX,self.contentViewInPortraitOffsetCenterY + CGRectGetHeight(self.view.frame)/2));
         }
         
         self.contentViewContainer.center = center;
