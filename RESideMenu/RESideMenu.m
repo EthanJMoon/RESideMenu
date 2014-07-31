@@ -69,9 +69,13 @@
     _menuViewContainer = [[UIView alloc] init];
     _contentViewContainer = [[UIView alloc] init];
     
-    _animationDuration = 0.35f;
-    _animationSpringDamping = 0.575f;
-    _animationSpringVelocity = 0.425f;
+    _openAnimationDuration = 0.450f;
+    _openAnimationSpringDamping = 0.675f;
+    _openAnimationSpringVelocity = 0.425f;
+    
+    _closeAnimationDuration = 0.350;
+    _closeAnimationSpringDamping = 0.825f;
+    _closeAnimationSpringVelocity = 5.000f;
     
     _interactivePopGestureRecognizerEnabled = YES;
   
@@ -150,7 +154,7 @@
         contentViewController.view.alpha = 0;
         contentViewController.view.frame = self.contentViewContainer.bounds;
         [self.contentViewContainer addSubview:contentViewController.view];
-        [UIView animateWithDuration:self.animationDuration animations:^{
+        [UIView animateWithDuration:0.350f animations:^{
             contentViewController.view.alpha = 1;
         } completion:^(BOOL finished) {
             [self __hideViewController:self.contentViewController];
@@ -268,8 +272,8 @@
     [self __addContentButton];
     [self __updateContentViewShadow];
     
-    [UIView animateWithDuration:self.animationDuration delay:0.0f usingSpringWithDamping:self.animationSpringDamping
-          initialSpringVelocity:self.animationSpringVelocity
+    [UIView animateWithDuration:self.openAnimationDuration delay:0.0f usingSpringWithDamping:self.openAnimationSpringDamping
+          initialSpringVelocity:self.openAnimationSpringVelocity
                         options:UIViewAnimationOptionCurveEaseIn animations:^{
         if (self.scaleContentView) {
             self.contentViewContainer.transform = CGAffineTransformMakeScale(self.contentViewScaleValue, self.contentViewScaleValue);
@@ -308,8 +312,8 @@
     [self __updateContentViewShadow];
     
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    [UIView animateWithDuration:self.animationDuration delay:0.0f usingSpringWithDamping:self.animationSpringDamping
-          initialSpringVelocity:self.animationSpringVelocity
+    [UIView animateWithDuration:self.openAnimationDuration delay:0.0f usingSpringWithDamping:self.openAnimationSpringDamping
+          initialSpringVelocity:self.openAnimationSpringVelocity
                         options:UIViewAnimationOptionCurveEaseIn animations:^{
         if (self.scaleContentView) {
             self.contentViewContainer.transform = CGAffineTransformMakeScale(self.contentViewScaleValue, self.contentViewScaleValue);
@@ -391,8 +395,8 @@
     
     if (animated) {
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-        [UIView animateWithDuration:self.animationDuration delay:0.0f usingSpringWithDamping:self.animationSpringDamping
-              initialSpringVelocity:self.animationSpringVelocity
+        [UIView animateWithDuration:self.closeAnimationDuration delay:0.0f usingSpringWithDamping:self.closeAnimationSpringDamping
+              initialSpringVelocity:self.closeAnimationSpringVelocity
                             options:UIViewAnimationOptionCurveEaseIn animations:^{
             animationBlock();
         } completion:^(BOOL finished) {
