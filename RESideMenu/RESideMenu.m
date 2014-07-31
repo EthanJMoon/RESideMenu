@@ -697,6 +697,7 @@
     [self.contentViewContainer addSubview:self.contentViewController.view];
     [self.contentViewController didMoveToParentViewController:self];
     
+    [self __statusBarNeedsAppearanceUpdate];
     [self __updateContentViewShadow];
     
     if (self.visible) {
