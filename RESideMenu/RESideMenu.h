@@ -46,6 +46,14 @@
 @property (weak, readwrite, nonatomic) id<RESideMenuDelegate> delegate;
 
 @property (assign, readwrite, nonatomic) NSTimeInterval animationDuration;
+@property (assign, readwrite, nonatomic) NSTimeInterval openAnimationDuration;
+@property (assign, readwrite, nonatomic) CGFloat openAnimationSpringDamping;
+@property (assign, readwrite, nonatomic) CGFloat openAnimationSpringVelocity;
+
+@property (assign, readwrite, nonatomic) NSTimeInterval closeAnimationDuration;
+@property (assign, readwrite, nonatomic) CGFloat closeAnimationSpringDamping;
+@property (assign, readwrite, nonatomic) CGFloat closeAnimationSpringVelocity;
+
 @property (strong, readwrite, nonatomic) UIImage *backgroundImage;
 @property (assign, readwrite, nonatomic) BOOL panGestureEnabled;
 @property (assign, readwrite, nonatomic) BOOL panFromEdge;
@@ -63,6 +71,8 @@
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewScaleValue;
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewInLandscapeOffsetCenterX;
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewInPortraitOffsetCenterX;
+@property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewInLandscapeOffsetCenterY;
+@property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewInPortraitOffsetCenterY;
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat parallaxMenuMinimumRelativeValue;
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat parallaxMenuMaximumRelativeValue;
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat parallaxContentMinimumRelativeValue;
